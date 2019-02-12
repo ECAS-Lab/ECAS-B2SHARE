@@ -24,24 +24,20 @@ version = __import__('ecasb2share').__version__
 description = 'ecasb2share provides a python library to interact with B2SHARE REST API.'
 reqs = [line.strip() for line in open('requirements.txt')]
 
-classifiers=[
-          'Development Status :: 3 - Alpha',
-          'Operating System :: MacOS :: MacOS X',
-          'Operating System :: Microsoft :: Windows',
-          'Operating System :: POSIX',
-          'Programming Language :: Python',
-          'Topic :: Software Development :: Bug Tracking',
-          ],
-
 setup(name='ecasb2share',
       version=version,
       description=description,
       long_description=long_description,
-      classifiers=classifiers,
+      classifiers=[
+          'Development Status :: 4 - Beta',
+          'Operating System :: MacOS :: MacOS X',
+          'Operating System :: POSIX',
+          'Programming Language :: Python',
+          'Topic :: Software Development :: Bug Tracking',
+          ],
       keywords='ecas rest python eosc-hub b2share',
       author='Sofiane Bendoukha',
-      author_email="bendoukha@dkrz.de",
-      url='https://github.com/bird-house/birdy',
+      url='https://github.com/SofianeB/ECAS-B2SHARE',
       license="mit",
       packages=find_packages(),
       include_package_data=True,

@@ -11,10 +11,9 @@ Python module to talk to B2SHARE HTTP REST API!
 How to install
 ==============
 
-Using pip
+Using pip::
 
+    pip install ecasb2share
 
-License
-=======
 
 

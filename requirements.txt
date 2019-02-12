@@ -13,4 +13,4 @@
 # Remember to also add them in setup.cfg but unpinned.
 # Example:
 requests>=1.0
-jsonpatch
+
