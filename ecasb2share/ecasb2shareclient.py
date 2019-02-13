@@ -193,11 +193,11 @@ class EcasShare (object):
 
     def add_file_to_draft_record(self, file_path, filebucket_id):
 
-        #pdb.set_trace()
-        header = {'Accept': 'application/json', 'Content-Type': 'application/octet-stream'}
+
+        header = {'Accept': 'application/json', 'Content-Type': 'octet-stream'}
         token = self.access_token_file().rstrip()
         payload = {'access_token': token}
-        upload_file = open(file_path, 'r')
+        upload_file = {"file": open(file_path, 'rb')}
         file_name = os.path.basename(file_path)
         url = urljoin(self.B2SHARE_URL, '/api/files/' + filebucket_id)
 
