@@ -19,8 +19,10 @@ class EcasShare (object):
 
     ####### Initialize ######
 
-    def __init__(self, url=None):
-        ''' Instantiate '''
+    def __init__(self, url=None, token_path=None):
+        ''' Instantiate
+        TODO set path for token file.
+        '''
 
         # TODO: set up b2share url (prod or test), token and payload?
         if url is None:
@@ -28,17 +30,18 @@ class EcasShare (object):
         else:
             self.B2SHARE_URL = url
 
+        if token_path is None:
+            self.token_path = '/home/jovyan/work/'
+        else:
+            self.token_path = token_path
+
     ######## Token ########
 
-    def access_token_file(self, dir_path=None, filename=None):
+    def access_token_file(self):
         ''' Read the token from a given file named 'token' '''
 
-        if dir_path and filename:
-            path = os.path.join(dir_path, filename)
-            f = open(path, 'r')
-        else:
-            f = open(r'token.txt', 'r')
-        return f.read().strip()
+        token_file = open(self.token_path, 'r')
+        return token_file.read().strip()
 
 
     ###### communities #####
@@ -129,16 +132,13 @@ class EcasShare (object):
         r = requests.post(self.B2SHARE_URL + '/api/records/', params={'access_token': token},
                           data=json.dumps(metadata), headers=header)
         record_id = r.json()
-        filebucket_id = record_id['links']['files'].split('/')[-1]
+        #filebucket_id = record_id['links']['files'].split('/')[-1]
+        filebucket_id = self.get_filebucketid_from_record(record_id['id'])
         print("Draft record created:\n" + record_id['id'])
         print('filebucketid:\n' + filebucket_id)
 
         return record_id['id'], filebucket_id
 
-
-    def submit_draft_for_publication(self):
-        ''''''
-        pass
 
     def delete_draft_record(self, record_id):
 
@@ -162,6 +162,11 @@ class EcasShare (object):
         return r.json()
 
     def get_filebucketid_from_record(self, record_id):
+        '''
+        TODO add exception when record not found
+        :param record_id:
+        :return:
+        '''
 
         record = self.get_specific_record(record_id)
         filebucket = record["links"]["files"].split('/')[-1]

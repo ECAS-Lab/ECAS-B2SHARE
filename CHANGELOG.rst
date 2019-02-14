@@ -4,6 +4,13 @@ Changelog
 
 
 
+Version 0.0.1b5 2019-02-14
+==========================
+
+- Update README
+- Fix uploading token
+- Fix creating new drafts records (filebucketid)
+
 Version 0.0.1b4 2019-02-12
 ==========================
 
