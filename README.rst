@@ -3,7 +3,7 @@ ECAS B2SHARE
 ============
 
 
-Python module to talk to B2SHARE HTTP REST API!
+Python module to interact with B2SHARE HTTP REST API!
 
 .. note:: This module is not a B2SHARE client and is related to the ECAS use case.
 
@@ -30,5 +30,12 @@ Create a client
 Create a draft record
 ::
 
-   client.create_draft_record(community_id, title)
+   client.create_draft_record(community_id, title, dataset_id)
 
+Docs
+====
+
+Build the doc
+::
+
+    python setup.py build_sphinx
