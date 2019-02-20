@@ -19,7 +19,7 @@ class EcasShare (object):
 
     ####### Initialize ######
 
-    def __init__(self, url=None, token_path=None):
+    def __init__(self, url=None, token_file=None):
         ''' Instantiate
         TODO set path for token file.
         '''
@@ -30,10 +30,10 @@ class EcasShare (object):
         else:
             self.B2SHARE_URL = url
 
-        if token_path is None:
-            self.token_path = '/home/jovyan/work/'
+        if token_file is None:
+            self.token_path = '/home/bendoukha/ECAS-B2SHARE/token.txt'
         else:
-            self.token_path = token_path
+            self.token_path = token_file
 
     ######## Token ########
 
@@ -97,8 +97,9 @@ class EcasShare (object):
          '''
 
         header = {'Content-Type': 'application-json'}
-        f = open(r'token.txt', 'r')
-        token = f.read().rstrip()
+        token = self.access_token_file().rstrip()
+        #f = open(r'token.txt', 'r')
+        #token = f.read().rstrip()
         payload = {'access_token': token}
 
         if draft:
