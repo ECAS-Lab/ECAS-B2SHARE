@@ -12,11 +12,6 @@ import requests
 import json
 import os
 from urllib.parse import urljoin
-import logging
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
 
 class EcasShare (object):
 
@@ -26,36 +21,24 @@ class EcasShare (object):
 
     def __init__(self, url=None, token_file=None):
         ''' Instantiate
-
-        :param: url: Optional: url of the B2SHARE instance. If None the default is the testing instance at https://trng-b2share.eudat.eu
-        :param: token_file: Optional: file that contains the access token.
-        TODO set up b2share url (prod or test), token and payload?
+        TODO set path for token file.
         '''
 
-        logger.debug('Initialize the client')
-
+        # TODO: set up b2share url (prod or test), token and payload?
         if url is None:
             self.B2SHARE_URL = 'https://trng-b2share.eudat.eu'
         else:
             self.B2SHARE_URL = url
 
         if token_file is None:
-<<<<<<< HEAD
-            self.token_path = '/home/bendoukha/ECAS-B2SHARE/token.txt'
-=======
-            self.token_path = '/home/jovyan/work/token.txt'
->>>>>>> c03283757d178b94ff979f5620052e69d28af1ce
+            self.token_path = '/home/jovyan/work/conf/token.txt'
         else:
             self.token_path = token_file
 
     ######## Token ########
 
     def access_token_file(self):
-        '''
-        Read access token from file.
-
-        :return: access token
-        '''
+        ''' Read the token from a given file named 'token' '''
 
         token_file = open(self.token_path, 'r')
         return token_file.read().strip()
@@ -65,10 +48,8 @@ class EcasShare (object):
 
     def list_communities(self, token=None):
         '''
-        List all the communities, without any filtering.
 
-        :param token: (Optional)
-        :return: List of communities in json.
+        :return: list of communities in json
         '''
 
         url = urljoin(self.B2SHARE_URL, 'api/communities')
@@ -93,12 +74,6 @@ class EcasShare (object):
         return r.json()
 
     def get_community_shema(self, community_id):
-        '''
-        Retrieves the JSON schema of records approved by a specific community.
-
-        :param community_id:
-        :return: JSON schema, embedded in a JSON object,
-        '''
 
         r = requests.get(self.B2SHARE_URL + '/api/communities/' + community_id + '/schemas/last')
         return r.json()
@@ -107,42 +82,19 @@ class EcasShare (object):
 
     def list_records(self):
         '''
-        List all the records, without any filtering.
-
+        List all the records, without any filtering
         TODO add pagination
-
-        :return: List of records in JSON format.
+        :return:
         '''
-
         url = urljoin(self.B2SHARE_URL, 'api/records')
         payload = {'size': 10, 'page': 1}
         req = requests.get(url)
         return req.json()
 
-    def list_records_community(self, community_id):
-        '''
-        List all records of a specific community.
-
-        :param community_id: The id of the community..
-        :return:  List of records in JSON format.
-        '''
-
-        url = urljoin(self.B2SHARE_URL, 'api/records')
-        token = self.access_token_file()
-        header = {'Content-Type': 'application/json'}
-        payload = {'q': community_id, 'access_token': token}
-        req = requests.get(url, params=payload, headers=header)
-
-        return req.json()
-
     def get_specific_record(self, record_id, draft=True):
-        '''
-        List the metadata of the record specified by RECORD_ID.
-
-        :param record_id:
-        :param draft:
-        :return:
-        '''
+        ''' List specific records
+         TODO add access token
+         '''
 
         header = {'Content-Type': 'application-json'}
         token = self.access_token_file().rstrip()
@@ -152,12 +104,9 @@ class EcasShare (object):
 
         if draft:
             url = urljoin(self.B2SHARE_URL, 'api/records/' + record_id + '/draft')
-        else:
-            url = urljoin(self.B2SHARE_URL, 'api/records/' + record_id)
-
-        req = requests.get(url, params=payload, headers=header, verify=False)
-        temp = json.loads(req.text)
-        return temp
+            req = requests.get(url, params=payload, headers=header, verify=False)
+            temp = json.loads(req.text)
+            return temp
 
     def get_record_pid(self, record_id):
         '''
@@ -173,12 +122,7 @@ class EcasShare (object):
     def create_draft_record(self, community_id, title):
         '''
         Create a new record with minimal metadata, in the draft state.
-
-        :param community_id: id of the community (ex: EUDAT)
-        :param title: of hte new record (further metadata can be added using the GUI).
-        :param original_dataset_id: Optional:
-
-        :return:  draft record contents and location. Please note that the returned json object contains also the URL of the file bucket used for the record.
+        :return:
         '''
 
         token = self.access_token_file().rstrip()
@@ -198,13 +142,6 @@ class EcasShare (object):
 
 
     def delete_draft_record(self, record_id):
-        '''
-        Send a DELETE request to the file's URL, which is the same URL used for uploading.
-
-        :param record_id: id of the record to be deleted
-
-        :return: request status
-        '''
 
 
         url = urljoin(self.B2SHARE_URL, '/api/records/' + record_id + '/draft')
@@ -214,13 +151,7 @@ class EcasShare (object):
 
         req = requests.delete(url, params=payload, headers=header)
 
-        try:
-            req.raise_for_status()
-        except requests.exceptions.HTTPError as e:
-
-            return "Error: " + str(e)
-
-        #return req.status_code
+        return req
 
 
     def search_records(self):
@@ -248,7 +179,7 @@ class EcasShare (object):
         Search for all drafts (unpublished records) that are accessible by the requestor.
         Usually this means own records only.
 
-        :return: List of draft records in JSON format.
+        :return:
         '''
         token = self.access_token_file().rstrip()
         header = {"Content-Type": "application/json"}
@@ -267,15 +198,6 @@ class EcasShare (object):
     ##### files ######
 
     def add_file_to_draft_record(self, file_path, filebucket_id):
-        '''
-        To upload a new file into a draft record object, first you need to identify the file bucket URL.
-        This URL can be found in the information returned when querying a draft record, in the 'links/files' section of the returned data.
-
-        :param file_path: file (dataset, plot) as direct streaam
-        :param filebucket_id: bucket id.
-
-        :return: informations about the newly uploaded file
-        '''
 
 
         header = {'Accept': 'application/json', 'Content-Type': 'octet-stream'}
@@ -291,13 +213,6 @@ class EcasShare (object):
 
 
     def list_files_in_bucket(self, filebucket_id):
-        '''
-        List the files uploaded into a record object
-
-        :param filebucket_id: bucket id
-
-        :return: information about all the files in the record object.
-        '''
 
 
         url = urljoin(self.B2SHARE_URL, '/api/files/' + filebucket_id)
@@ -305,6 +220,12 @@ class EcasShare (object):
         payload = {'access_token': token}
         req = requests.get(url, params=payload)
         return req.json()
+
+
+    ##### metadata #######
+
+
+
 
 
 
