@@ -12,6 +12,7 @@ import requests
 import json
 import os
 from urllib.parse import urljoin
+from requests.exceptions import HTTPError
 
 class EcasShare (object):
 
@@ -110,7 +111,7 @@ class EcasShare (object):
 
     def get_record_pid(self, record_id):
         '''
-        Get the pid from the record metadata.
+        Get the pid from the record metadata (published).
 
         :param record_id:
         :return:
@@ -220,6 +221,32 @@ class EcasShare (object):
         payload = {'access_token': token}
         req = requests.get(url, params=payload)
         return req.json()
+
+
+    ##### requests #######
+
+    @staticmethod
+    def __send_get_request(url):
+
+        try:
+            response = requests.get(url)
+
+            # If the response was successful, no Exception will be raised
+            response.raise_for_status()
+        except HTTPError as http_err:
+            print(f'HTTP error occurred: {http_err}')  # Python 3.6
+        except Exception as err:
+            print(f'Other error occurred: {err}')  # Python 3.6
+        else:
+            print('Success!')
+        pass
+
+    def response_status(response):
+
+        if response:
+            print("Success!")
+        else:
+            print('An error has occured.')
 
 
     ##### metadata #######
