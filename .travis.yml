@@ -21,6 +21,6 @@ after_success: |
     git rm -rf --cached .
     mv demo-ecas-ophidia/ecas-b2share-tn.slides.html demo-ecas-ophidia/index.html
     git add -f --ignore-errors demo-ecas-ophidia/index.html reveal.js
-    git -c user.name='travis' -c user.email='travis' commit -m init
+    git -c user.name='SofianeB' -c user.email='thesofiane@gmail.com' commit -m init
     git push -f -q https://SofianeB:4dc07ded219422a7fe6c340a463abbb39cf21e07@github.com/$TRAVIS_REPO_SLUG gh-pages
     fi
