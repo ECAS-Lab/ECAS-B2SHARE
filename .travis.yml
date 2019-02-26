@@ -1,0 +1,26 @@
+language: python
+cache: pip
+
+python:
+    - "2.7"
+
+# install jupyter and get reveal.js as we will need it to build the website
+# from Travis
+install:
+    - pip install jupyter
+    - wget https://github.com/hakimel/reveal.js/archive/master.zip
+    - unzip master.zip
+    - mv reveal.js-master reveal.js
+
+script:
+    - jupyter nbconvert demo-ecas-ophidia/ecas-b2share-tn.ipynb --to slides --reveal-prefix=reveal.js
+
+after_success: |
+    if [ -n "4dc07ded219422a7fe6c340a463abbb39cf21e07" ]; then
+    git checkout --orphan gh-pages
+    git rm -rf --cached .
+    mv nb.slides.html index.html
+    git add -f --ignore-errors index.html img reveal.js
+    git -c user.name='travis' -c user.email='travis' commit -m init
+    git push -f -q https://SofianeB:4dc07ded219422a7fe6c340a463abbb39cf21e07@github.com/$TRAVIS_REPO_SLUG gh-pages
+    fi
