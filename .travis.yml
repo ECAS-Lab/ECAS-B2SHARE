@@ -16,11 +16,11 @@ script:
     - jupyter nbconvert demo-ecas-ophidia/ecas-b2share-tn.ipynb --to slides --reveal-prefix=reveal.js
 
 after_success: |
-    if [ -n "4dc07ded219422a7fe6c340a463abbb39cf21e07" ]; then
+    if [ -n "$GITHUB_API_KEY" ]; then
     git checkout --orphan gh-pages
     git rm -rf --cached .
     mv demo-ecas-ophidia/ecas-b2share-tn.slides.html demo-ecas-ophidia/index.html
     git add -f --ignore-errors demo-ecas-ophidia/index.html reveal.js
-    git -c user.name='SofianeB' -c user.email='thesofiane@gmail.com' commit -m init
-    git push -f -q https://SofianeB:f728d14b67ef5b41905ab6aaa6b6602759b3373a@github.com/$TRAVIS_REPO_SLUG gh-pages
+    git -c user.name='travis' -c user.email='travis' commit -m init
+    git push -f -q https://$GITHUB_USER:$GITHUB_API_KEY@github.com/$TRAVIS_REPO_SLUG gh-pages
     fi
