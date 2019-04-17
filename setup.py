@@ -28,6 +28,7 @@ setup(name='ecasb2share',
       version=version,
       description=description,
       long_description=long_description,
+      long_description_content_type='text/markdown',
       classifiers=[
           'Development Status :: 4 - Beta',
           'Operating System :: OS Independent',

@@ -33,11 +33,6 @@ Create a draft record
 
    client.create_draft_record(community_id, title, dataset_id)
 
-Create a draft record with PID
-::
-
-   coming soon ...
-
 Docs
 ====
 
