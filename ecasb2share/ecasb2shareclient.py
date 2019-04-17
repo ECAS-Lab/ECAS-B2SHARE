@@ -424,13 +424,3 @@ class EcasShare (object):
                 return json.load(metadata_json)
 
 
-    # CLI
-
-    @click.command()
-    def cli():
-        '''
-        Example script
-        :return:
-        '''
-
-        click.echo('Test Cli!')
