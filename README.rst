@@ -1,5 +1,9 @@
 .. image:: https://travis-ci.org/SofianeB/ECAS-B2SHARE.svg?branch=master
-    :target: https://travis-ci.org/SofianeB/ECAS-B2SHARE
+   :target: https://travis-ci.org/SofianeB/ECAS-B2SHARE 
+    
+.. image:: https://readthedocs.org/projects/ecas-b2share/badge/?version=latest
+   :target: https://ecas-b2share.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
 
 ============
 ECAS B2SHARE
