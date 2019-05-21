@@ -1,0 +1,21 @@
+{
+    "hits": {
+      "hits": [
+        {
+          "created": "Tue, 18 Oct 2016 08:30:47 GMT",
+          "description": "TEST community",
+          "id": "e9b9792e-79fb-4b07-b6b4-b9c2bd06d095",
+          "links": {
+            "self": "https://b2share.eudat.eu/api/communities/e9b9792e-79fb-4b07-b6b4-b9c2bd06d095"
+          },
+          "logo": "/img/communities/test_community.png",
+          "name": "TEST_COMMUNITY",
+          "updated": "Tue, 18 Oct 2016 08:30:47 GMT"
+        }
+      ],
+      "total": 11
+    },
+    "links": {
+      "self": "https://b2share.eudat.eu/api/communities/"
+    }
+}

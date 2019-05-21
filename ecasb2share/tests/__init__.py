@@ -1,0 +1,1 @@
+all = ["ecas_b2share_test", "tests.py"]

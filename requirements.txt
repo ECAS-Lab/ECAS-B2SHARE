@@ -15,3 +15,7 @@
 requests>=1.0
 nose
 Click
+sphinx_rtd_theme
+mock
+coverage
+responses

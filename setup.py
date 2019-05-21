@@ -10,6 +10,20 @@ import sys
 
 from pkg_resources import require, VersionConflict
 from setuptools import setup, find_packages
+from setuptools.command.test import test as TestCommand
+
+
+class NoseTestCommand(TestCommand):
+    def finalize_options(self):
+        TestCommand.finalize_options(self)
+        self.test_args = []
+        self.test_suite = True
+
+    def run_tests(self):
+        # Run nose ensuring that argv simulates running nosetests directly
+        import nose
+        nose.run_exit(argv=['nosetests'])
+
 
 try:
     require('setuptools>=38.3')
@@ -28,13 +42,19 @@ setup(name='ecasb2share',
       version=version,
       description=description,
       long_description=long_description,
-      long_description_content_type='text/markdown',
+      long_description_content_type='text/x-rst',
+      tests_require=[
+          'nose',
+          'mock',
+          'coverage'
+      ],
+      cmdclass={'test': NoseTestCommand},
       classifiers=[
           'Development Status :: 4 - Beta',
           'Operating System :: OS Independent',
           'Programming Language :: Python :: 3',
           'Topic :: Software Development :: Bug Tracking',
-          ],
+      ],
       keywords='ecas rest python eosc-hub b2share',
       author='Sofiane Bendoukha',
       url='https://github.com/SofianeB/ECAS-B2SHARE',
@@ -42,6 +62,12 @@ setup(name='ecasb2share',
       packages=find_packages(),
       include_package_data=True,
       install_requires=reqs,
+      test_suite='nose.collector',
+      py_modules=['ecasb2share_cli'],
+      entry_points='''
+          [console_scripts]
+          ecasb2share_cli=ecasb2share_cli:main
+      ''',
+
 
       )
-

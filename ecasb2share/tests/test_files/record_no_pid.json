@@ -1,0 +1,36 @@
+{
+    "created": "2019-04-17T13:08:33.724263+00:00",
+    "id": "b4da58206da24b1aacf3b35c66024ea8",
+    "links": {
+        "files": "https://eudat-b2share-test.csc.fi/api/files/da7ddd6c-5d14-4986-91aa-d9a46b4138d8",
+        "publication": "https://eudat-b2share-test.csc.fi/api/records/b4da58206da24b1aacf3b35c66024ea8",
+        "self": "https://eudat-b2share-test.csc.fi/api/records/b4da58206da24b1aacf3b35c66024ea8/draft",
+        "versions": "https://eudat-b2share-test.csc.fi/api/records/bb98126baee44a2b939c4d4b40d5f2aa/versions"
+    },
+    "metadata": {
+        "$schema": "https://eudat-b2share-test.csc.fi/api/communities/d2c6e694-0c0a-4884-ad15-ddf498008320/schemas/1#/draft_json_schema",
+        "community": "d2c6e694-0c0a-4884-ad15-ddf498008320",
+        "community_specific": {
+            "c9097f4d-95b7-484a-9b10-a261bbbb20b0": {}
+        },
+        "ePIC_PID": "http://hdl.handle.net/0000/b4da58206da24b1aacf3b35c66024ea8",
+        "open_access": true,
+        "owners": [
+            217
+        ],
+        "publication_state": "published",
+        "related_identifiers": [
+            {
+                "related_identifier": "foo/bar",
+                "related_identifier_type": "Handle",
+                "relation_type": "IsDerivedFrom"
+            }            
+        ],
+        "titles": [
+            {
+                "title": "TEST Title"
+            }
+        ]
+    },
+    "updated": "2019-04-17T13:10:36.213349+00:00"
+}
