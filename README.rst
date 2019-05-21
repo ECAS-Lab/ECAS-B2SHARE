@@ -1,3 +1,6 @@
+.. image:: https://travis-ci.org/SofianeB/ECAS-B2SHARE.svg?branch=master
+    :target: https://travis-ci.org/SofianeB/ECAS-B2SHARE
+
 ============
 ECAS B2SHARE
 ============
