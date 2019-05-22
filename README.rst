@@ -13,11 +13,11 @@ ECAS B2SHARE
 ============
 
 
-Python module to talk to B2SHARE HTTP REST API!
+Python module to interact with the B2SHARE HTTP REST API!
 
 .. note::
 
-   This module is not a B2SHARE client and is related to the ECAS use case.
+   This module does not cover the whole B2SHARE API and is specific to the `ECAS use case <https://ee-docs.readthedocs.io/en/latest/>`_.
 
 
 How to install
@@ -43,3 +43,8 @@ Create a draft record
 ::
 
    client.create_draft_record(community_id, title)
+
+Documentation
+=============
+
+For more details, please check the technical documentation `here <https://ecas-b2share.readthedocs.io/en/latest/>`_. 
