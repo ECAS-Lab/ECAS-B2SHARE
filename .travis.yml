@@ -15,6 +15,7 @@ install:
     - unzip master.zip
     - mv reveal.js-master reveal.js
     - pip install -r requirements.txt
+    - pip install coveralls
 
 script:
     - jupyter nbconvert demo-ecas-ophidia/ecas-b2share-tn.ipynb --to slides --reveal-prefix=reveal.js
@@ -30,3 +31,4 @@ after_success: |
     git -c user.name='travis' -c user.email='travis' commit -m init
     git push -f -q https://$GITHUB_USER:$GITHUB_API_KEY@github.com/$TRAVIS_REPO_SLUG gh-pages
     fi
+    - coveralls
