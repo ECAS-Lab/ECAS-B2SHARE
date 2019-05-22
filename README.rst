@@ -4,7 +4,10 @@
 .. image:: https://readthedocs.org/projects/ecas-b2share/badge/?version=latest
    :target: https://ecas-b2share.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
-
+   
+.. image:: https://badge.fury.io/py/ecasb2share.svg
+    :target: https://badge.fury.io/py/ecasb2share
+    
 ============
 ECAS B2SHARE
 ============
