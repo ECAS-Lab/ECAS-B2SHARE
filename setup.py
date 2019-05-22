@@ -50,10 +50,15 @@ setup(name='ecasb2share',
       ],
       cmdclass={'test': NoseTestCommand},
       classifiers=[
-          'Development Status :: 4 - Beta',
+          'Development Status :: 5 - Production/Stable',
           'Operating System :: OS Independent',
-          'Programming Language :: Python :: 3',
-          'Topic :: Software Development :: Bug Tracking',
+          'Programming Language :: Python :: 3.5',
+          'Programming Language :: Python :: 3.6',
+          'Programming Language :: Python :: 3.7',
+          'Topic :: Scientific/Engineering :: Information Analysis',
+          'Topic :: Software Development :: Python modules',
+          'License :: OSI Approved :: MIT License',
+          
       ],
       keywords='ecas rest python eosc-hub b2share',
       author='Sofiane Bendoukha',
@@ -71,3 +76,4 @@ setup(name='ecasb2share',
 
 
       )
+
