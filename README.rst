@@ -9,7 +9,7 @@
     :target: https://badge.fury.io/py/ecasb2share
    
 .. image:: https://coveralls.io/repos/github/SofianeB/ECAS-B2SHARE/badge.svg?branch=master
-:target: https://coveralls.io/github/SofianeB/ECAS-B2SHARE?branch=master
+    :target: https://coveralls.io/github/SofianeB/ECAS-B2SHARE?branch=master
 
     
 ============
