@@ -1,6 +1,7 @@
 channels:
-- conda-forge
-- pyviz
+  - conda-forge
+  - pyviz
+  - defaults
 dependencies:
 - xarray
 - geoviews
@@ -11,4 +12,4 @@ dependencies:
 - python=3.7
 - seaborn=0.9
 - pip:
-  - ecasb2share==0.0.1b16
+  - ecasb2share=0.0.1b16
