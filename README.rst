@@ -43,13 +43,13 @@ Create a client
 ::
 
    from ecasb2share.ecasb2shareclient import EcasShare as Client
-   client = Client()
+   client = Client(url, token_file)
 
 
 Create a draft record
 ::
 
-   client.create_draft_record(community_id, title)
+   client.create_draft_record_with_pid(title, pid)
 
 Documentation
 =============
