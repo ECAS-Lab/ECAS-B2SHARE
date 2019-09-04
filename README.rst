@@ -1,3 +1,6 @@
+.. image:: https://mybinder.org/badge_logo.svg
+ :target: https://mybinder.org/v2/gh/SofianeB/ECAS-B2SHARE/master?filepath=demo-ecas-ophidia%2Fecas-b2share.ipynb
+ 
 .. image:: https://travis-ci.org/SofianeB/ECAS-B2SHARE.svg?branch=master
    :target: https://travis-ci.org/SofianeB/ECAS-B2SHARE 
     
