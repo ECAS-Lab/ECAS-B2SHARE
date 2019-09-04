@@ -1,0 +1,2 @@
+# Setup a workspace
+jupyter lab workspaces import binder/workspace.json
