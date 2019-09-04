@@ -9,7 +9,7 @@ from nose.tools import assert_is_not_none
 
 RECORD = json.load(open('test_files/record.json'))
 RECORD_ID = 'b4da58206da24b1aacf3b35c66024ea8'
-RECORD_ID_NO_PID = 'dd5dd9f1fa4441a79dfa5f270469f8d9'
+RECORD_ID_NO_PID = '359a7e017d164f6383e58bba925c4276'
 
 
 class EcasShareTestCase(unittest.TestCase):
