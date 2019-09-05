@@ -1,0 +1,18 @@
+{"titles": [{"title": "test 1"}],
+
+    "related_identifiers": [
+                            {
+                              "related_identifier": "original/pid1",
+                              "related_identifier_type": "Handle",
+                              "relation_type": "IsDerivedFrom"
+                            },
+                            {
+                              "related_identifier": "original/pid",
+                              "related_identifier_type": "Handle",
+                              "relation_type": "IsDerivedFrom"
+                            }
+                        ],
+
+  "open_access": true}
+
+

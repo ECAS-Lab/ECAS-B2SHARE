@@ -1,0 +1,15 @@
+channels:
+  - conda-forge
+  - pyviz
+  - defaults
+dependencies:
+- xarray
+- geoviews
+- jupyterlab=1.0
+- dask=2.1
+- matplotlib=3.1
+- pandas=0.24
+- python=3.7
+- seaborn=0.9
+- pip:
+  - ecasb2share=0.0.1b16
